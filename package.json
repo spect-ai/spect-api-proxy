@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "nodemon src/app.ts",
-    "build": "tsc",
+    "build": "yarn && tsc",
     "start": "node dist/app.js"
   },
   "dependencies": {
