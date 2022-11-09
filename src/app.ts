@@ -11,7 +11,15 @@ const limiter = rateLimit({
   max: 60, // limit each IP to 60 requests per windowMs
 });
 
-app.use(cors());
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      return callback(null, true);
+    },
+    optionsSuccessStatus: 200,
+    credentials: true,
+  })
+);
 app.use(limiter);
 
 app.get("/", (req: Request, res: Response) => {
