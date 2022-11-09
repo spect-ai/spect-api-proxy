@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import { createProxyMiddleware } from "http-proxy-middleware";
 import rateLimit from "express-rate-limit";
+import cors from "cors";
 
 const app: Application = express();
 const port: number = 3001;
@@ -10,6 +11,7 @@ const limiter = rateLimit({
   max: 60, // limit each IP to 60 requests per windowMs
 });
 
+app.use(cors());
 app.use(limiter);
 
 app.get("/", (req: Request, res: Response) => {
